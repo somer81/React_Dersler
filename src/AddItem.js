@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Searchbar(props){
+function AddItem(props){
          
   const [name,SetName] = useState(""); 
   const [price,SetPrice] = useState(0); 
@@ -8,15 +8,19 @@ function Searchbar(props){
   const [brand,SetBrand] = useState("");
   const [weight,SetWeight] = useState(0); 
 
-  const searchBarPressed = ()=>{
-    props.updateSearchParams({name:name,price:price,type:type,brand:brand,weight:weight});
+  const addItemPressed = ()=>{
+    props.addItem({name:name,price:price,type:type,brand:brand,weight:weight});
     //console.log({name})
     //console.log({weight}) 
+    SetName("");
+    SetPrice(0);
+    SetType("");
+    SetBrand("");
   }
 
     return(
         <div>
-          <h2> Search an Item </h2>
+            <h2>Add an Item</h2>
             <form> 
                 <label htmlFor="">Name of Product</label>
                 <input 
@@ -55,7 +59,7 @@ function Searchbar(props){
                 onChange={(e)=> SetWeight(e.target.value)}
                 ></input>
                 <br></br>
-                <button type="button" onClick={searchBarPressed}> Submit </button>
+                <button type="button" onClick={addItemPressed}> Add Item </button>
 
             </form>
         </div>
@@ -63,4 +67,4 @@ function Searchbar(props){
 }
 
 
-export default Searchbar; 
+export default AddItem; 
